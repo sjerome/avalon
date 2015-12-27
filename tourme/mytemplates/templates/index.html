@@ -1,0 +1,81 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<h1>Starting Game</h1>
+		<form action="new_game">
+			Player 1: <input type="text" name="player1">
+			<br>
+			Player 2:
+			<input type="text" name="player2">
+			<br>
+			Player 3:
+			<input type="text" name="player3">
+			<br>
+			Player 4:
+			<input type="text" name="player4">
+			<br>
+			Player 5:
+			<input type="text" name="player5">
+			<br>
+			Player 6:
+			<input type="text" name="player6">
+			<br>
+			Password:
+			<input type="text" name="password">
+			<br>
+			<input type="submit" value="Submit">
+		</form>
+
+		<h1> Turn: {{whos_up}} </h1>
+		<h1> Chosen: {{chosen_players}} </h1>
+		<h1> Votes: {{votes}} </h1>
+		<h1> Choose Players For Missions </h1>
+
+		<form action="choose_players">
+			Player email: <input type="text" name="player">
+			<br>
+			Password: <input type="text" name="password">
+			<br>
+			Players [Comma Separated]: <input type="text" name="players">
+			<br>
+			<input type="submit" value="Submit">
+		</form>
+
+		<h1> Voting </h1>
+		<form action="vote">
+			Player email: <input type="text" name="player">
+			<br>
+			Player password: <input type="text" name="password">
+			<br>
+			Player vote: <input type="text" name="vote">
+			<br>
+			<input type="submit" value="Submit">
+		</form>
+
+		<a href="javascript:refresh()"> Everyone voted, mission failed, and we saw. Refresh. </a>
+
+		<h1> Mission! </h1>
+		<form action="mission">
+			Player email: <input type="text" name="player">
+			<br>
+			Player password: <input type="text" name="password">
+			<br>
+			Player vote: <input type="text" name="vote">
+			<br>
+			<input type="submit" value="Submit">
+		</form>
+
+		{% for round in rounds %}
+			<h4> {{round}} </h4>
+		{% endfor %}
+	</body>
+
+	<script>
+		function refresh() {
+			var xhttp = new XMLHttpRequest();
+			xhttp.open("GET", "refresh", true);
+			xhttp.send();
+		}
+	</script>
+</html>
